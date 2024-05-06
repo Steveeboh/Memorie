@@ -1,8 +1,14 @@
 const cards = document.querySelectorAll('.memory-card');
+const triesCounter = document.querySelector('#tries-counter');
 
 let hasFlippedCard = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let tries = 0;
+
+function updateTriesCounter() {
+  triesCounter.textContent = `Tries: ${tries}`;
+}
 
 function flipCard() {
   if (lockBoard) return;
@@ -13,11 +19,12 @@ function flipCard() {
   if (!hasFlippedCard) {
     hasFlippedCard = true;
     firstCard = this;
-
     return;
   }
 
   secondCard = this;
+  tries += 1;
+  updateTriesCounter();
   checkForMatch();
 }
 
@@ -58,3 +65,4 @@ function resetBoard() {
 })();
 
 cards.forEach(card => card.addEventListener('click', flipCard));
+updateTriesCounter();
