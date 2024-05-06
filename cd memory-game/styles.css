@@ -1,3 +1,7 @@
+:root {
+  --color-green-background: #F0FEDF;
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -7,7 +11,7 @@
   body {
     height: 100vh;
     display: flex;
-    background: #060AB2;
+    background: var(--color-green-background, #F0FEDF);
   }
   
   .memory-game {
@@ -22,12 +26,15 @@
   .memory-card {
     width: calc(25% - 10px);
     height: calc(33.333% - 10px);
-    margin: 5px;
+    margin: 20px;
     position: relative;
     transform: scale(1);
     transform-style: preserve-3d;
     transition: transform .5s;
-    box-shadow: 1px 1px 1px rgba(0,0,0,.3);
+    
+    border-radius: 20px;
+    background: #D9D9D9;
+    filter: drop-shadow(7px 7px 4px rgba(0, 0, 0, 0.25));
   }
   
   .memory-card:active {
